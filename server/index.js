@@ -23,7 +23,7 @@ app.use(carsRoute)
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: 'InteroDataBase' //Collection Name
+    dbName: 'GlenSparesDataBase' //Collection Name
 }).then(() => {
     console.log("Connected to the DB");
 })
