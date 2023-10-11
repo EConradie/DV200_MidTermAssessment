@@ -61,7 +61,7 @@ function Product() {
       </Row>
 
       {products.map((product) => (
-        <Row key={product.id} className='product-container d-flex align-items-center'>
+        <Row key={product._id} className='product-container d-flex align-items-center'>
           <Col xs={2} className='text-center'>
             <p>{product.name}</p>
           </Col>
