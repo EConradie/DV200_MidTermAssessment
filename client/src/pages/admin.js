@@ -139,10 +139,7 @@ function Admin() {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Close
-          </Button>
-          <Button variant="primary">Save Changes</Button>
+          <Button variant="primary" type="submit">Submit</Button>
         </Modal.Footer>
       </Modal >
     </>
