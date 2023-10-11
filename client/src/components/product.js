@@ -39,31 +39,31 @@ function Product() {
     <>
       {products.map((product) => (
         <Row key={product.id} className='product-container d-flex align-items-center'>
-          <Col xs={2}>
+          <Col xs={2} className='text-center'>
             <p>{product.name}</p>
           </Col>
 
-          <Col xs={2}>
+          <Col xs={2} className='text-center'>
             <p>{product.make}</p>
           </Col>
 
-          <Col xs={2}>
+          <Col xs={2} className='text-center'>
             <p>{product.model}</p>
           </Col>
 
-          <Col xs={1}>
+          <Col xs={1} className='text-center'>
             <p>{product.year}</p>
           </Col>
 
-          <Col xs={2}>
+          <Col xs={2} className='text-center'>
             <p>{product.chase}</p>
           </Col>
 
-          <Col xs={1}>
+          <Col xs={1} className='text-center'>
             <p>{product.stock}</p>
           </Col>
 
-          <Col xs={2}>
+          <Col xs={2} className='text-end'>
             <Button variant="primary">Add to cart</Button>
           </Col>
         </Row>
