@@ -40,6 +40,38 @@ function Checkout() {
 
     return (
         <>
+            <Row className='product-container d-flex align-items-center'>
+                <Col xs={2} className='text-center'>
+                    <p>Product Name</p>
+                </Col>
+
+                <Col xs={2} className='text-center'>
+                    <p>Car Make</p>
+                </Col>
+
+                <Col xs={2} className='text-center'>
+                    <p>Car Model</p>
+                </Col>
+
+                <Col xs={1} className='text-center'>
+                    <p>Year</p>
+                </Col>
+
+                <Col xs={2} className='text-center'>
+                    <p>Chasis Nr</p>
+                </Col>
+
+
+                <Col xs={1} className='text-center'>
+                    <p>Stock</p>
+                </Col>
+
+                <Col xs={1} className='text-center'>
+                    <p>Price</p>
+                </Col>
+
+                
+            </Row>
             {sessionStorage.getItem('selectedProducts') && JSON.parse(sessionStorage.getItem('selectedProducts')).length > 0 ?
                 JSON.parse(sessionStorage.getItem('selectedProducts')).map((productId) => {
                     const product = products.find(p => p.id === productId);
@@ -50,27 +82,27 @@ function Checkout() {
                                 <p>{product.name}</p>
                             </Col>
 
-                            <Col xs={2}>
+                            <Col xs={2} className='text-center'>
                                 <p>{product.make}</p>
                             </Col>
 
-                            <Col xs={2}>
+                            <Col xs={2} className='text-center'>
                                 <p>{product.model}</p>
                             </Col>
 
-                            <Col xs={1}>
+                            <Col xs={1} className='text-center'>
                                 <p>{product.year}</p>
                             </Col>
 
-                            <Col xs={2}>
+                            <Col xs={2} className='text-center'>
                                 <p>{product.chase}</p>
                             </Col>
 
-                            <Col xs={1}>
+                            <Col xs={1} className='text-center'>
                                 <p>{product.stock}</p>
                             </Col>
 
-                            <Col xs={1}>
+                            <Col xs={1} className='text-center'>
                                 <p>R{product.price}</p>
                             </Col>
 
