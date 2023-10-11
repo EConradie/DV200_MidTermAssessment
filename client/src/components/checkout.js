@@ -3,11 +3,15 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Modal from 'react-bootstrap/Modal';
+
 
 
 function Checkout() {
 
     const [products, setProducts] = useState([]);
+
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
       // Define an async function to fetch products
@@ -97,18 +101,33 @@ function Checkout() {
             {sessionStorage.getItem('selectedProducts') && JSON.parse(sessionStorage.getItem('selectedProducts')).length > 0 &&
                 <Row className='total-price-container d-flex align-items-center'>
                     <Col xs={10}>
-                        <Button variant="primary" onClick={() => {
-                            const selectedProducts = JSON.parse(sessionStorage.getItem('selectedProducts'));
-                            selectedProducts.forEach(productId => {
-                                const product = products.find(product => product._id === productId);
-                                if (product) {
-                                    product.stock -= 1;
+                        <Button variant="primary" onClick={() => setShowModal(true)}>Checkout</Button>
+                        <Modal show={showModal} onHide={() => setShowModal(false)}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Invoice</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                {products.filter(product => JSON.parse(sessionStorage.getItem('selectedProducts')).includes(product._id)).map((product) => {
+                                    const selectedProductCount = JSON.parse(sessionStorage.getItem('selectedProducts')).filter(id => id === product._id).length;
+                                    product.stock -= selectedProductCount;
                                     // TODO: Update the product in the database
-                                }
-                            });
-                            sessionStorage.removeItem('selectedProducts');
-                            window.location.reload();
-                        }}>Checkout</Button>
+                                    return (
+                                        <p>{product.name} x {selectedProductCount} = R{product.price * selectedProductCount}</p>
+                                    )
+                                })}
+                                <p>Total Price: R{products.filter(product => JSON.parse(sessionStorage.getItem('selectedProducts')).includes(product._id)).reduce((total, product) => {
+                                    const selectedProductCount = JSON.parse(sessionStorage.getItem('selectedProducts')).filter(id => id === product._id).length;
+                                    return total + Number(product.price) * selectedProductCount;
+                                }, 0)}</p>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={() => {
+                                    setShowModal(false);
+                                    sessionStorage.removeItem('selectedProducts');
+                                    window.location.reload();
+                                }}>Close</Button>
+                            </Modal.Footer>
+                        </Modal>
                     </Col>
                     <Col xs={2} className='white'>
                         <p>Total Price: R{products.filter(product => JSON.parse(sessionStorage.getItem('selectedProducts')).includes(product._id)).reduce((total, product) => {
