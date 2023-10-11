@@ -41,7 +41,7 @@ function Checkout() {
                 JSON.parse(sessionStorage.getItem('selectedProducts')).map((productId) => {
                     const product = products.find(p => p.id === productId);
                     return (
-                        <Row key={product.id} className='product-container d-flex align-items-center'>
+                        <Row key={product.id} className='product-container d-flex align-items-center white'>
                             <Col xs={2}>
                                 <p>{product.name}</p>
                             </Col>
@@ -68,7 +68,7 @@ function Checkout() {
 
                         </Row>
                     )
-                }) : <p>Cart is empty</p>}
+                }) : <p className='white'>Cart is empty</p>}
 
 
 

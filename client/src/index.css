@@ -18,7 +18,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--dark-grey);
-  color: var(--white);
 }
 
 code {
@@ -28,6 +27,10 @@ code {
 
 p {
   margin: 0;
+}
+
+.white {
+  color: var(--white);
 }
 
 .text-center {
