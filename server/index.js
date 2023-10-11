@@ -1,11 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const postsRoute = require('./routes/Posts');
+const carsRoute = require('./routes/Cars');
 // const connection = require("./db");
-const userRoutes = require("./routes/user");
-const authRoutes = require("./routes/auth");
- 
+
 
 require('dotenv/config');
 
@@ -19,9 +17,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 
 // routes
-app.use(postsRoute)
-app.use(userRoutes);
-app.use(authRoutes);
+app.use(carsRoute)
 
 
 mongoose.connect(process.env.DB_CONNECTION, {
