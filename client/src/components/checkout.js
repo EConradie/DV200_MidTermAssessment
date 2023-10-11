@@ -14,17 +14,17 @@ function Checkout() {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-      // Define an async function to fetch products
-      const fetchProducts = async () => {
-        try {
-          const response = await axios.get('http://localhost:3001/api/Cars'); // Adjust the URL as needed
-          setProducts(response.data); // Update the products state with the fetched data
-        } catch (error) {
-          console.error('Error fetching products:', error);
-        }
-      };
-  
-      fetchProducts(); // Call the function to fetch products
+        // Define an async function to fetch products
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/api/Cars'); // Adjust the URL as needed
+                setProducts(response.data); // Update the products state with the fetched data
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchProducts(); // Call the function to fetch products
     }, []);
 
     return (
@@ -58,7 +58,7 @@ function Checkout() {
                     <p>Price</p>
                 </Col>
 
-                
+
             </Row>
             {sessionStorage.getItem('selectedProducts') && JSON.parse(sessionStorage.getItem('selectedProducts')).length > 0 ?
                 products.filter(product => JSON.parse(sessionStorage.getItem('selectedProducts')).includes(product._id)).map((product) => {
@@ -101,7 +101,7 @@ function Checkout() {
             {sessionStorage.getItem('selectedProducts') && JSON.parse(sessionStorage.getItem('selectedProducts')).length > 0 &&
                 <Row className='total-price-container d-flex align-items-center'>
                     <Col xs={10}>
-                        <Button variant="primary" onClick={() => setShowModal(true)}>Checkout</Button>
+                        <Button variant="primary" onClick={() => setShowModal(true)}>Invoice</Button>
                         <Modal show={showModal} onHide={() => setShowModal(false)}>
                             <Modal.Header closeButton>
                                 <Modal.Title>Invoice</Modal.Title>
