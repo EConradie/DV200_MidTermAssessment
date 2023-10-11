@@ -21,8 +21,8 @@ function App() {
 
     <>
       <Navigation />
-      
-      <Contatiner>
+
+      <Contatiner className='mt-5'>
         <Routes>
           <Route exact path="/" element={<Landingpage />} />
           <Route path='/checkout' element={<Checkout />} />

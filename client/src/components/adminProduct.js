@@ -38,7 +38,7 @@ function AdminProduct() {
   return (
     <>
       {products.map((product) => (
-        <Row key={product.id}>
+        <Row key={product.id} className='product-container d-flex align-items-center'>
           <Col>
             <p>{product.name}</p>
           </Col>
@@ -66,7 +66,7 @@ function AdminProduct() {
           <Col>
             <Button variant="primary">Update</Button>
           </Col>
-          
+
           <Col>
             <Button variant="danger">Delete</Button>
           </Col>

@@ -1,5 +1,6 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 function Product() {
 
@@ -37,7 +38,7 @@ function Product() {
   return (
     <>
       {products.map((product) => (
-        <Row key={product.id}>
+        <Row key={product.id} className='product-container d-flex align-items-center'>
           <Col xs={2}>
             <p>{product.name}</p>
           </Col>
@@ -50,7 +51,7 @@ function Product() {
             <p>{product.model}</p>
           </Col>
 
-          <Col xs={2}>
+          <Col xs={1}>
             <p>{product.year}</p>
           </Col>
 
@@ -58,8 +59,12 @@ function Product() {
             <p>{product.chase}</p>
           </Col>
 
-          <Col xs={2}>
+          <Col xs={1}>
             <p>{product.stock}</p>
+          </Col>
+
+          <Col xs={2}>
+            <Button variant="primary">Add to cart</Button>
           </Col>
         </Row>
       ))}
