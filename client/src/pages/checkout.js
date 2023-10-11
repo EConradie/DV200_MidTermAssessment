@@ -12,6 +12,7 @@ import Checkout from '../components/checkout';
 
 function CheckoutPage() {
 
+  
   return (
     <>
 

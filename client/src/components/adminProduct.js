@@ -132,7 +132,7 @@ function AdminProduct() {
           </Col>
 
           <Col xs={1} className='text-center'>
-            <p>R{product.price}</p>
+            <p>{product.price}</p>
           </Col>
 
           <Col xs={1} className='text-end'>
