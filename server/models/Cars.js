@@ -21,10 +21,6 @@ const CarsSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  id: {
-    type: String,
-    required: true
-  },
   stock: {
     type: Number,
     required: true
