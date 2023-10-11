@@ -7,7 +7,7 @@ import Contatiner from 'react-bootstrap/Container';
 
 // Pages
 import Admin from './pages/admin';
-import Checkout from './pages/checkout';
+import CheckoutPage from './pages/checkout';
 import Landingpage from './pages/landingpage';
 
 
@@ -25,7 +25,7 @@ function App() {
       <Contatiner className='mt-5'>
         <Routes>
           <Route exact path="/" element={<Landingpage />} />
-          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/checkout' element={<CheckoutPage />} />
           <Route path='/admin' element={<Admin />} />
         </Routes>
       </Contatiner>

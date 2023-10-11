@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 
 import Checkout from '../components/checkout';
 
-function checkout() {
+function CheckoutPage() {
 
   return (
     <>
@@ -25,4 +25,4 @@ function checkout() {
   );
 }
 
-export default checkout;
+export default CheckoutPage;

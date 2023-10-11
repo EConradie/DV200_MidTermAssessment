@@ -10,7 +10,7 @@ import Tabs from 'react-bootstrap/Tabs';
 // Components
 import Product from '../components/product';
 
-function landingpage() {
+function Landingpage() {
 
   return (
     <>
@@ -19,4 +19,4 @@ function landingpage() {
   );
 }
 
-export default landingpage;
+export default Landingpage;
