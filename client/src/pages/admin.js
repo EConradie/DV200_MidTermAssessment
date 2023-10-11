@@ -18,6 +18,8 @@ function Admin() {
   const [chasisNum, setChasisNum] = useState('');
   const [year, setYear] = useState('');
   const [stock, setStock] = useState('');
+  const [price, setPrice] = useState('');
+
 
   const [showModal, setShowModal] = useState(false);
 
@@ -42,6 +44,7 @@ function Admin() {
       chasisNum: chasisNum,
       year: year,
       stock: stock,
+      price: price,
     };
 
     try {
@@ -132,6 +135,15 @@ function Admin() {
                     id="stock"
                     value={stock}
                     onChange={(e) => setStock(e.target.value)}
+                  />
+                </Col>
+                <Col>
+                  <label htmlFor="price">Price:</label>
+                  <input className="form-control"
+                    type="text"
+                    id="price"
+                    value={model}
+                    onChange={(e) => setPrice(e.target.value)}
                   />
                 </Col>
               </Row>
