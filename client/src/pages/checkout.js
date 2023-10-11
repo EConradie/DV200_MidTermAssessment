@@ -17,7 +17,7 @@ function checkout() {
 
       <Col xs={4}>
         <Button onClick={() => {
-          sessionStorage.removeItem('selectedProducts');
+          sessionStorage.clear();
           window.location.reload();
         }}>
           Clear Cart
