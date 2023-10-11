@@ -4,39 +4,26 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+import axios from 'axios';
+
 function AdminProduct() {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [products, setProducts] = useState([]);
 
-  const products = [
-    {
-      id: 1,
-      name: 'Brake Pads',
-      make: 'Toyota',
-      model: 'Corolla',
-      year: '2010',
-      chase: '123456789',
-      stock: '10',
-    },
-    {
-      id: 2,
-      name: 'Oil Filter',
-      make: 'Honda',
-      model: 'Civic',
-      year: '2015',
-      chase: '987654321',
-      stock: '15',
-    },
-    {
-      id: 3,
-      name: 'Spark Plugs',
-      make: 'Ford',
-      model: 'F-150',
-      year: '2020',
-      chase: '567891234',
-      stock: '8',
-    },
-  ];
+  useEffect(() => {
+    // Define an async function to fetch products
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/api/Cars'); // Adjust the URL as needed
+        setProducts(response.data); // Update the products state with the fetched data
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts(); // Call the function to fetch products
+  }, []);
 
   const handleUpdateClick = (product) => {
     setSelectedProduct(product);
