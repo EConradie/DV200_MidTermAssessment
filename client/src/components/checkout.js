@@ -41,14 +41,13 @@ function Checkout() {
     return (
         <>
             {sessionStorage.getItem('selectedProducts') ?
-                <>
-                    {JSON.parse(sessionStorage.getItem('selectedProducts')).map((productId) => {
-                        const product = products.find(p => p.id === productId);
-                        return (
-                            <Row key={product.id} className='product-container d-flex align-items-center'>
-                                <Col xs={2}>
-                                    <p>{product.name}</p>
-                                </Col>
+                JSON.parse(sessionStorage.getItem('selectedProducts')).map((productId) => {
+                    const product = products.find(p => p.id === productId);
+                    return (
+                        <Row key={product.id} className='product-container d-flex align-items-center white'>
+                            <Col xs={2}>
+                                <p>{product.name}</p>
+                            </Col>
 
                                 <Col xs={2}>
                                     <p>{product.make}</p>
@@ -70,27 +69,9 @@ function Checkout() {
                                     <p>{product.stock}</p>
                                 </Col>
 
-                                <Col xs={1}>
-                                    <p>R{product.price}</p>
-                                </Col>
-
-                            </Row>
-                        )
-                    })}
-
-                    <Row className='total-price-container d-flex align-items-center'>
-                        <Col xs={9}>
-                            <Button variant="primary">Checkout</Button>
-                        </Col>
-                        <Col xs={2}>
-                            <p>Total Price: R{JSON.parse(sessionStorage.getItem('selectedProducts')).reduce((total, productId) => {
-                                const product = products.find(p => p.id === productId);
-                                return total + Number(product.price);
-                            }, 0)}</p>
-                        </Col>
-                    </Row>
-
-                </> : <p>Cart is empty</p>}
+                        </Row>
+                    )
+                }) : <p className='white'>Cart is empty</p>}
 
 
 
