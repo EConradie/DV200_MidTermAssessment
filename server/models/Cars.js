@@ -1,30 +1,30 @@
 const mongoose = require('mongoose')
 
 const CarsSchema = mongoose.Schema({
-  postType: {
+  name: {
     type: String,
     required: true
   },
-  community: {
+  make: {
     type: String,
     required: true
   },
-  title: {
+  model: {
     type: String,
     required: true
   },
-  description: {
+  chasisNum: {
     type: String,
     required: true
   },
-  // postContent: {
-  //   type: String,
-  //   required: true
-  // },
-  // tagsSubmite: {
-  //   type: String,
-  //   required: true
-  // }
+  year: {
+    type: String,
+    required: true
+  },
+  id: {
+    type: String,
+    required: true
+  }
 })
 
 module.exports = mongoose.model("Cars", CarsSchema)
