@@ -148,12 +148,10 @@ function Admin() {
                 </Col>
               </Row>
             </div>
+            <Button variant="primary" type="submit" className='mr-15'>Submit</Button>
+            <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
-          <Button variant="primary" type="submit">Submit</Button>
-        </Modal.Footer>
       </Modal >
     </>
   );
