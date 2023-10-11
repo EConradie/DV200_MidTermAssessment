@@ -97,7 +97,18 @@ function Checkout() {
             {sessionStorage.getItem('selectedProducts') && JSON.parse(sessionStorage.getItem('selectedProducts')).length > 0 &&
                 <Row className='total-price-container d-flex align-items-center'>
                     <Col xs={10}>
-                        <Button variant="primary">Checkout</Button>
+                        <Button variant="primary" onClick={() => {
+                            const selectedProducts = JSON.parse(sessionStorage.getItem('selectedProducts'));
+                            selectedProducts.forEach(productId => {
+                                const product = products.find(product => product._id === productId);
+                                if (product) {
+                                    product.stock -= 1;
+                                    // TODO: Update the product in the database
+                                }
+                            });
+                            sessionStorage.removeItem('selectedProducts');
+                            window.location.reload();
+                        }}>Checkout</Button>
                     </Col>
                     <Col xs={2} className='white'>
                         <p>Total Price: R{products.filter(product => JSON.parse(sessionStorage.getItem('selectedProducts')).includes(product._id)).reduce((total, product) => {
