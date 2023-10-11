@@ -66,10 +66,10 @@ function Admin() {
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Update Product</Modal.Title>
+          <Modal.Title>Create new Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form submit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <Row className='mb-3'>
                 <Col>
@@ -142,7 +142,7 @@ function Admin() {
                   <input className="form-control"
                     type="text"
                     id="price"
-                    value={model}
+                    value={price}
                     onChange={(e) => setPrice(e.target.value)}
                   />
                 </Col>
