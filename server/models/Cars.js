@@ -24,6 +24,10 @@ const CarsSchema = mongoose.Schema({
   stock: {
     type: Number,
     required: true
+  },
+  price: {
+    type: Number,
+    required: true
   }
 })
 

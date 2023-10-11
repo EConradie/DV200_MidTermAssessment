@@ -13,6 +13,7 @@ function Checkout() {
             year: '2010',
             chase: '123456789',
             stock: '10',
+            price: '300'
         },
         {
             id: 2,
@@ -22,6 +23,7 @@ function Checkout() {
             year: '2015',
             chase: '987654321',
             stock: '15',
+            price: '150'
         },
         {
             id: 3,
@@ -31,18 +33,20 @@ function Checkout() {
             year: '2020',
             chase: '567891234',
             stock: '8',
+            price: '100'
         },
     ];
 
 
     return (
         <>
-            {sessionStorage.getItem('selectedProducts') ?
+            {sessionStorage.getItem('selectedProducts') && JSON.parse(sessionStorage.getItem('selectedProducts')).length > 0 ?
                 JSON.parse(sessionStorage.getItem('selectedProducts')).map((productId) => {
                     const product = products.find(p => p.id === productId);
                     return (
+
                         <Row key={product.id} className='product-container d-flex align-items-center white'>
-                            <Col xs={2}>
+                            <Col xs={2} className='text-center'>
                                 <p>{product.name}</p>
                             </Col>
 
@@ -66,12 +70,27 @@ function Checkout() {
                                 <p>{product.stock}</p>
                             </Col>
 
+                            <Col xs={1}>
+                                <p>R{product.price}</p>
+                            </Col>
+
                         </Row>
                     )
                 }) : <p className='white'>Cart is empty</p>}
 
-
-
+            {sessionStorage.getItem('selectedProducts') && JSON.parse(sessionStorage.getItem('selectedProducts')).length > 0 &&
+                <Row className='total-price-container d-flex align-items-center'>
+                    <Col xs={9}>
+                        <Button variant="primary">Checkout</Button>
+                    </Col>
+                    <Col xs={2} className='white'>
+                        <p>Total Price: R{JSON.parse(sessionStorage.getItem('selectedProducts')).reduce((total, productId) => {
+                            const product = products.find(p => p.id === productId);
+                            return total + Number(product.price);
+                        }, 0)}</p>
+                    </Col>
+                </Row>
+            }
         </>
 
     );
