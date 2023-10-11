@@ -20,6 +20,7 @@ function Admin() {
     const [chasisNum, setChasisNum] = useState('');
     const [year, setYear] = useState('');
     const [stock, setStock] = useState('');
+    const [price, setPrice] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +32,7 @@ function Admin() {
       chasisNum: chasisNum,
       year: year,
       stock: stock,
+      price: price
     };
 
     try {
@@ -44,7 +46,7 @@ function Admin() {
 
   return (
     <>
-        <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="name">Name:</label>
       <input
         type="text"
