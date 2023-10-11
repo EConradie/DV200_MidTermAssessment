@@ -40,6 +40,20 @@ function AdminProduct() {
     setShowModal(true);
   };
 
+  const handleUpdateSubmit = async () => {
+    try {
+      await axios.put(`http://localhost:3001/api/Cars/${selectedProduct._id}`, selectedProduct);
+      // Update the local state with the modified product
+      const updatedProducts = products.map((product) =>
+        product._id === selectedProduct._id ? selectedProduct : product
+      );
+      setProducts(updatedProducts);
+      handleCloseModal();
+    } catch (error) {
+      console.error('Error updating product:', error);
+    }
+  };
+
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedProduct(null);
@@ -178,7 +192,7 @@ function AdminProduct() {
             <Button variant="secondary" onClick={handleCloseModal}>
               Close
             </Button>
-            <Button variant="primary">Save Changes</Button>
+            <Button variant="primary"onClick={handleUpdateSubmit}>Save Changes</Button>
           </Modal.Footer>
         </Modal >
       )
