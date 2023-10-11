@@ -60,13 +60,17 @@ function AdminProduct() {
           <p>Year</p>
         </Col>
 
-        <Col xs={2} className='text-center'>
+        <Col xs={1} className='text-center'>
           <p>Chasis Nr</p>
         </Col>
 
 
         <Col xs={1} className='text-center'>
           <p>Stock</p>
+        </Col>
+
+        <Col xs={1} className='text-center'>
+          <p>Price</p>
         </Col>
 
         <Col xs={1} className='text-end'>
@@ -96,12 +100,16 @@ function AdminProduct() {
             <p>{product.year}</p>
           </Col>
 
-          <Col xs={2} className='text-center'>
+          <Col xs={1} className='text-center'>
             <p>{product.chasisNum}</p>
           </Col>
 
           <Col xs={1} className='text-center'>
             <p>{product.stock}</p>
+          </Col>
+
+          <Col xs={1} className='text-center'>
+            <p>{product.price}</p>
           </Col>
 
           <Col xs={1} className='text-end'>
