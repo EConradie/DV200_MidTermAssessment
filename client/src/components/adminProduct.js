@@ -25,6 +25,16 @@ function AdminProduct() {
     fetchProducts(); // Call the function to fetch products
   }, []);
 
+  const handleDeleteClick = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/api/Cars/${id}`);
+      // Remove the deleted product from the local state to update the view
+      setProducts(products.filter((product) => product._id !== id));
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
+  };
+
   const handleUpdateClick = (product) => {
     setSelectedProduct(product);
     setShowModal(true);
@@ -111,7 +121,7 @@ function AdminProduct() {
           </Col>
 
           <Col xs={1} className='text-end'>
-            <Button variant="danger">Delete</Button>
+            <Button variant="danger" onClick={() => handleDeleteClick(product._id)}>Delete</Button>
           </Col>
         </Row>
       ))}
