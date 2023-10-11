@@ -57,12 +57,16 @@ function Product() {
           <p>Year</p>
         </Col>
 
-        <Col xs={2} className='text-center'>
-          <p>Chasis Number</p>
+        <Col xs={1} className='text-center'>
+          <p>Chasis Nr</p>
         </Col>
 
         <Col xs={1} className='text-center'>
           <p>Stock</p>
+        </Col>
+
+        <Col xs={1} className='text-center'>
+          <p>Price</p>
         </Col>
 
         <Col xs={2} className='text-center'>
