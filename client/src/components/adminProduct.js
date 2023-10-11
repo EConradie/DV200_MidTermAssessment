@@ -97,7 +97,7 @@ function AdminProduct() {
           </Col>
 
           <Col xs={2} className='text-center'>
-            <p>{product.chase}</p>
+            <p>{product.chasisNum}</p>
           </Col>
 
           <Col xs={1} className='text-center'>
@@ -151,7 +151,7 @@ function AdminProduct() {
 
                   <Col>
                     <label htmlFor="chase">Car Chase</label>
-                    <input type="text" className="form-control" id="chase" name="chase" placeholder={selectedProduct.chase} />
+                    <input type="text" className="form-control" id="chase" name="chase" placeholder={selectedProduct.chasisNum} />
                   </Col>
                 </Row>
 

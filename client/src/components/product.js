@@ -79,7 +79,7 @@ function Product() {
           </Col>
 
           <Col xs={1} className='text-center'>
-            <p>{product.chase}</p>
+            <p>{product.chasisNum}</p>
           </Col>
 
           <Col xs={1} className='text-center'>
