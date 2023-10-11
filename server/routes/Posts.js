@@ -1,42 +1,42 @@
 const express = require('express')
 
-const postsSchema = require('../models/Posts')
+const CarsSchema = require('../models/Cars')
 
 const router = express();
 
 //Get All
-router.get('/api/posts/', async (req, res) => {
-    const findPosts = await postsSchema.find();
-    res.json(findPosts)
+router.get('/api/Cars/', async (req, res) => {
+    const findCars = await CarsSchema.find();
+    res.json(findCars)
 })
 
 //Get Single
-router.get('/api/posts/:id', async (req, res) => {
-    const findPosts = await postsSchema.findById(req.params.id);
-    res.json(findPosts)
+router.get('/api/Cars/:id', async (req, res) => {
+    const findCars = await CarsSchema.findById(req.params.id);
+    res.json(findCars)
 })
 
 //Update
-router.put('/api/posts/:id', async (req, res) => {
+router.put('/api/Cars/:id', async (req, res) => {
     const { id } = req.params.id
-    await postsSchema.updateOne({id} , req.body)
+    await CarsSchema.updateOne({id} , req.body)
         .then(response => res.json(response))
         .catch(error => res.status(500).json(error))
 })
 
 
 //Create
-router.post('/api/posts', async (req, res) => {
-    const posts = new postsSchema({ ...req.body });
-    await posts.save()
+router.post('/api/Cars', async (req, res) => {
+    const Cars = new CarsSchema({ ...req.body });
+    await Cars.save()
         .then(response => res.json(response))
         .catch(error => res.status(500).json(error))
 })
 
 //Delete
-router.delete('/api/posts/:id', async (req, res) => {
+router.delete('/api/Cars/:id', async (req, res) => {
     const { id } = req.params.id
-    await postsSchema.findByIdAndDelete(req.params.id)
+    await CarsSchema.findByIdAndDelete(req.params.id)
         .then(response => res.json(response))
         .catch(error => res.status(500).json(error))
 })
