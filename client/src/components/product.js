@@ -66,7 +66,7 @@ function Product() {
         </Col>
 
         <Col xs={2} className='text-center'>
-          <p>Update</p>
+          <p>Add to cart</p>
         </Col>
 
       </Row>
