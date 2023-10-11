@@ -5,13 +5,22 @@ import React from 'react';
 // import Row from 'react-bootstrap/Row';
 // import Form from 'react-bootstrap/Form';
 // import Tab from 'react-bootstrap/Tab';
-// import Tabs from 'react-bootstrap/Tabs';
+import Button from 'react-bootstrap/Button';
+
+import Checkout from '../components/checkout';
 
 function checkout() {
 
   return (
     <>
-    <h1>hello Checkout</h1>
+      <Checkout />
+
+      <Button onClick={() => {
+        sessionStorage.removeItem('selectedProducts');
+        window.location.reload();
+      }}>
+        Clear Cart
+      </Button>
     </>
   );
 }
