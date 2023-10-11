@@ -13,6 +13,7 @@ function Product() {
       year: '2010',
       chase: '123456789',
       stock: '10',
+      price: '300'
     },
     {
       id: 2,
@@ -22,6 +23,7 @@ function Product() {
       year: '2015',
       chase: '987654321',
       stock: '15',
+      price: '150'
     },
     {
       id: 3,
@@ -31,6 +33,7 @@ function Product() {
       year: '2020',
       chase: '567891234',
       stock: '8',
+      price: '100'
     },
   ];
 
@@ -86,12 +89,16 @@ function Product() {
             <p>{product.year}</p>
           </Col>
 
-          <Col xs={2} className='text-center'>
+          <Col xs={1} className='text-center'>
             <p>{product.chase}</p>
           </Col>
 
           <Col xs={1} className='text-center'>
             <p>{product.stock}</p>
+          </Col>
+
+          <Col xs={1} className='text-center'>
+            <p>R{product.price}</p>
           </Col>
 
           <Col xs={2} className='text-end'>

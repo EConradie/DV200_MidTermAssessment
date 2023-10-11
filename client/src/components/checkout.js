@@ -70,27 +70,27 @@ function Checkout() {
                     return (
 
                         <Row key={product.id} className='product-container d-flex align-items-center white'>
-                            <Col xs={2} className='text-center'>
+                            <Col xs={2}>
                                 <p>{product.name}</p>
                             </Col>
 
-                            <Col xs={2} className='text-center'>
+                            <Col xs={2}>
                                 <p>{product.make}</p>
                             </Col>
 
-                            <Col xs={2} className='text-center'>
+                            <Col xs={2}>
                                 <p>{product.model}</p>
                             </Col>
 
-                            <Col xs={1} className='text-center'>
+                            <Col xs={1}>
                                 <p>{product.year}</p>
                             </Col>
 
-                            <Col xs={2} className='text-center'>
+                            <Col xs={2}>
                                 <p>{product.chase}</p>
                             </Col>
 
-                            <Col xs={1} className='text-center'>
+                            <Col xs={1}>
                                 <p>{product.stock}</p>
                             </Col>
 
