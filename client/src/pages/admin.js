@@ -142,7 +142,7 @@ function Admin() {
                   <input className="form-control"
                     type="text"
                     id="price"
-                    value={model}
+                    value={price}
                     onChange={(e) => setPrice(e.target.value)}
                   />
                 </Col>
