@@ -37,6 +37,37 @@ function Product() {
 
   return (
     <>
+      <Row className='product-container d-flex align-items-center'>
+        <Col xs={2} className='text-center'>
+          <p>Product Name</p>
+        </Col>
+
+        <Col xs={2} className='text-center'>
+          <p>Car Make</p>
+        </Col>
+
+        <Col xs={2} className='text-center'>
+          <p>Car Model</p>
+        </Col>
+
+        <Col xs={1} className='text-center'>
+          <p>Year</p>
+        </Col>
+
+        <Col xs={2} className='text-center'>
+          <p>Chasis Number</p>
+        </Col>
+
+        <Col xs={1} className='text-center'>
+          <p>Stock</p>
+        </Col>
+
+        <Col xs={2} className='text-center'>
+          <p>Update</p>
+        </Col>
+
+      </Row>
+
       {products.map((product) => (
         <Row key={product.id} className='product-container d-flex align-items-center'>
           <Col xs={2} className='text-center'>
@@ -64,7 +95,7 @@ function Product() {
           </Col>
 
           <Col xs={2} className='text-end'>
-          <Button variant="primary" onClick={() => {
+            <Button variant="primary" onClick={() => {
               let selectedProducts = sessionStorage.getItem('selectedProducts');
               selectedProducts = selectedProducts ? JSON.parse(selectedProducts) : [];
               selectedProducts.push(product.id);
