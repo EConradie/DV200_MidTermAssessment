@@ -40,7 +40,7 @@ function AdminProduct() {
     setShowModal(true);
   };
 
-  const handleUpdateSubmit = async () => {
+    const handleUpdateSubmit = async () => {
     try {
       await axios.put(`http://localhost:3001/api/Cars/${selectedProduct._id}`, selectedProduct);
       // Update the local state with the modified product
@@ -72,7 +72,7 @@ function AdminProduct() {
           <p>Product Name</p>
         </Col>
 
-        <Col xs={2} className='text-center'>
+        <Col xs={1} className='text-center'>
           <p>Car Make</p>
         </Col>
 
@@ -84,10 +84,9 @@ function AdminProduct() {
           <p>Year</p>
         </Col>
 
-        <Col xs={1} className='text-center'>
+        <Col xs={2} className='text-center'>
           <p>Chasis Nr</p>
         </Col>
-
 
         <Col xs={1} className='text-center'>
           <p>Stock</p>
@@ -112,7 +111,7 @@ function AdminProduct() {
             <p>{product.name}</p>
           </Col>
 
-          <Col xs={2} className='text-center'>
+          <Col xs={1} className='text-center'>
             <p>{product.make}</p>
           </Col>
 
@@ -124,7 +123,7 @@ function AdminProduct() {
             <p>{product.year}</p>
           </Col>
 
-          <Col xs={1} className='text-center'>
+          <Col xs={2} className='text-center'>
             <p>{product.chasisNum}</p>
           </Col>
 
@@ -133,7 +132,7 @@ function AdminProduct() {
           </Col>
 
           <Col xs={1} className='text-center'>
-            <p>{product.price}</p>
+            <p>R{product.price}</p>
           </Col>
 
           <Col xs={1} className='text-end'>
@@ -191,6 +190,10 @@ function AdminProduct() {
                   <Col>
                     <label htmlFor="stock">Stock</label>
                     <input type="text" className="form-control" id="stock" name="stock" placeholder={selectedProduct.stock} />
+                  </Col>
+                  <Col>
+                    <label htmlFor="stock">Price</label>
+                    <input type="text" className="form-control" id="stock" name="stock" placeholder={selectedProduct.price} />
                   </Col>
                 </Row>
               </div>
