@@ -1,42 +1,27 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 
 function Checkout() {
 
-    const products = [
-        {
-            id: 1,
-            name: 'Brake Pads',
-            make: 'Toyota',
-            model: 'Corolla',
-            year: '2010',
-            chase: '123456789',
-            stock: '10',
-            price: '300'
-        },
-        {
-            id: 2,
-            name: 'Oil Filter',
-            make: 'Honda',
-            model: 'Civic',
-            year: '2015',
-            chase: '987654321',
-            stock: '15',
-            price: '150'
-        },
-        {
-            id: 3,
-            name: 'Spark Plugs',
-            make: 'Ford',
-            model: 'F-150',
-            year: '2020',
-            chase: '567891234',
-            stock: '8',
-            price: '100'
-        },
-    ];
+    const [products, setProducts] = useState([]);
 
+    useEffect(() => {
+      // Define an async function to fetch products
+      const fetchProducts = async () => {
+        try {
+          const response = await axios.get('http://localhost:3001/api/Cars'); // Adjust the URL as needed
+          setProducts(response.data); // Update the products state with the fetched data
+        } catch (error) {
+          console.error('Error fetching products:', error);
+        }
+      };
+  
+      fetchProducts(); // Call the function to fetch products
+    }, []);
 
     return (
         <>
@@ -61,9 +46,8 @@ function Checkout() {
                     <p>Chasis Nr</p>
                 </Col>
 
-
-                <Col xs={1} className='text-center'>
-                    <p>Stock</p>
+                <Col xs={2} className='text-center'>
+                    <p>Quantity</p>
                 </Col>
 
                 <Col xs={1} className='text-center'>
@@ -73,8 +57,8 @@ function Checkout() {
                 
             </Row>
             {sessionStorage.getItem('selectedProducts') && JSON.parse(sessionStorage.getItem('selectedProducts')).length > 0 ?
-                JSON.parse(sessionStorage.getItem('selectedProducts')).map((productId) => {
-                    const product = products.find(p => p.id === productId);
+                products.filter(product => JSON.parse(sessionStorage.getItem('selectedProducts')).includes(product._id)).map((product) => {
+                    const selectedProductCount = JSON.parse(sessionStorage.getItem('selectedProducts')).filter(id => id === product._id).length;
                     return (
 
                         <Row key={product.id} className='product-container d-flex align-items-center white'>
@@ -95,15 +79,15 @@ function Checkout() {
                             </Col>
 
                             <Col xs={2} className='text-center'>
-                                <p>{product.chase}</p>
+                                <p>{product.chasisNum}</p>
+                            </Col>
+
+                            <Col xs={2} className='text-center'>
+                                {selectedProductCount}
                             </Col>
 
                             <Col xs={1} className='text-center'>
-                                <p>{product.stock}</p>
-                            </Col>
-
-                            <Col xs={1} className='text-center'>
-                                <p>R{product.price}</p>
+                                <p>R{product.price * selectedProductCount}</p>
                             </Col>
 
                         </Row>
@@ -112,13 +96,13 @@ function Checkout() {
 
             {sessionStorage.getItem('selectedProducts') && JSON.parse(sessionStorage.getItem('selectedProducts')).length > 0 &&
                 <Row className='total-price-container d-flex align-items-center'>
-                    <Col xs={9}>
+                    <Col xs={10}>
                         <Button variant="primary">Checkout</Button>
                     </Col>
                     <Col xs={2} className='white'>
-                        <p>Total Price: R{JSON.parse(sessionStorage.getItem('selectedProducts')).reduce((total, productId) => {
-                            const product = products.find(p => p.id === productId);
-                            return total + Number(product.price);
+                        <p>Total Price: R{products.filter(product => JSON.parse(sessionStorage.getItem('selectedProducts')).includes(product._id)).reduce((total, product) => {
+                            const selectedProductCount = JSON.parse(sessionStorage.getItem('selectedProducts')).filter(id => id === product._id).length;
+                            return total + Number(product.price) * selectedProductCount;
                         }, 0)}</p>
                     </Col>
                 </Row>

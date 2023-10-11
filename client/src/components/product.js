@@ -94,7 +94,7 @@ function Product() {
             <Button variant="primary" onClick={() => {
               let selectedProducts = sessionStorage.getItem('selectedProducts');
               selectedProducts = selectedProducts ? JSON.parse(selectedProducts) : [];
-              selectedProducts.push(product.id);
+              selectedProducts.push(product._id);
               sessionStorage.setItem('selectedProducts', JSON.stringify(selectedProducts));
             }}>Add to cart</Button>
           </Col>
